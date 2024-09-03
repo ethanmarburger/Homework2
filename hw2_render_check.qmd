@@ -9,7 +9,7 @@ editor: visual
 
 ### Step 3
 
-#### Task 2: Basic Vector Practice
+#### Task 1: Basic Vector Practice
 
 1A) Creating a vector from pre-treatment blood pressure values.
 
@@ -65,3 +65,87 @@ change)
 mean_positive_bp_dif <- mean(boolean_postiive_bp)
 mean_positive_bp_dif
 ```
+
+
+#### Task 2: Basic Data Frame Practice
+
+1) Creating a data frame using previous data
+
+```{r}
+patient <- paste("Subject", 1:20, sep = "_")
+df <- data.frame(patient, pre_bp = pretreatment, post_bp = posttreatment, diff_bp = bloodpressure_dif)
+df
+```
+
+2) Returning only rows of the data frame where the diff_bp column is negative
+
+```{r}
+df_positive_dif <- df[df$diff_bp > 0, ]
+df_positive_dif
+```
+
+3) Adding a new column to my data frame orresponding to TRUE if the post_bp is less than 120 and FALSE
+if it is not
+
+```{r}
+df <- df[, -5] #ignore, deleting extra column
+df$post_bp_120 <- df$post_bp < 120
+df
+```
+
+4) Printing data frame nicely
+
+```{r}
+knitr::kable(df)
+```
+
+
+#### Task 3: List Practice
+
+1) Creating a new data frame with this data similar to task 2.
+
+```{r}
+#Combing values
+pre_bp <- c(138, 135, 147, 117, 152, 134, 114, 121, 131, 130)
+post_bp <- c(105, 136, 123, 130, 134, 143, 135, 139, 120, 124)
+#Difference between pre_trt and post_trt values
+bp_dif <- pre_bp - post_bp
+#Defining patient column
+patient <- paste("Subject", 1:20, sep = "_")
+#Creating a data frame
+placebo_df <- data.frame(patient, pre_bp, post_bp, bp_dif)
+#Adding new column based on if the post_trt is above 120 or not
+placebo_df$post_bp_120 <- placebo_df$post_bp < 120
+placebo_df
+```
+
+2) Creating and storing both data frames in a list
+
+```{r}
+bp_list <- list(treatment = df, placebo = placebo_df)
+bp_list
+```
+
+3) Accessing the first list element using three different types of syntax
+
+```{r}
+#Syntax 1
+bp_list[1][[1]]
+```
+
+```{r}
+#Syntax 2
+bp_list[[1]]
+```
+
+```{r}
+#Syntax 3
+bp_list[1]
+```
+
+4) In one line of code, accessing the pre_bp column of the placebo data frame.
+
+```{r}
+bp_list[[1]][["pre_bp"]]
+```
+
