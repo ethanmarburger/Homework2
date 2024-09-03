@@ -1,0 +1,67 @@
+---
+title: "Homework2"
+author: "Ethan Marburger"
+format: html
+editor: visual
+---
+
+## Homework 2
+
+### Step 3
+
+#### Task 2: Basic Vector Practice
+
+1A) Creating a vector from pre-treatment blood pressure values.
+
+```{r}
+pretreatment <- c(120, 151, 125, 126, 115, 132, 132, 129, 134, 139, 127, 122, 127, 135, 133, 128, 147, 138, 140, 132)
+pretreatment
+```
+1B) Creating a vector from post-treatment blood pressure values.
+
+```{r}
+posttreatment <- c(127, 145, 135, 122, 115, 122, 123, 126, 126, 129, 132, 146, 120, 114, 121, 120, 128, 120, 133, 115)
+posttreatment
+```
+2) Assigning names to vector elements using the name() and paste() functions
+
+```{r}
+names(pretreatment) <- paste("Subject", 1:20, sep = "_")
+names(posttreatment) <- paste("Subject", 1:20, sep = "_")
+```
+
+3) Calculate the change in blood pressure for each patient by subtracting post-treatment measurements
+from pre-treatment measurements.
+
+```{r}
+bloodpressure_dif <- pretreatment - posttreatment
+bloodpressure_dif
+```
+
+4) Calculate the average decrease in blood pressure across all patients.
+
+```{r}
+mean_bp_dif <- mean(bloodpressure_dif)
+mean_bp_dif
+```
+5) Determine which patients experienced a decrease in blood pressure after treatment (a positive change).
+
+```{r}
+positive_change_indices <- which(bloodpressure_dif > 0)
+positive_change_indices
+```
+
+6) Subsetting the vector of differences to only return those that have a positive change.
+
+```{r}
+boolean_postiive_bp <- bloodpressure_dif[bloodpressure_dif > 0]
+boolean_postiive_bp
+```
+
+7) Calculating the average decrease in blood pressure for those where the blood pressure decreased (positive
+change)
+
+```{r}
+mean_positive_bp_dif <- mean(boolean_postiive_bp)
+mean_positive_bp_dif
+```
