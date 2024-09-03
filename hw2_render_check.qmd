@@ -146,6 +146,6 @@ bp_list[1]
 4) In one line of code, accessing the pre_bp column of the placebo data frame.
 
 ```{r}
-bp_list[[1]][["pre_bp"]]
+bp_list[[2]][["pre_bp"]]
 ```
 
